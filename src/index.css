@@ -290,6 +290,12 @@ aside {
   align-items: center;
   justify-content: center;
 }
+.form-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  margin-top: 0.5rem;
+}
 
 .contenedor-form {
   padding: 5rem 3rem;
@@ -310,6 +316,8 @@ aside {
 .campo-form label {
   flex: 0 0 100px;
   font-family: var(--textFont);
+  font-size: 12px;
+  opacity: 0.7;
 }
 .campo-form input[type="password"],
 .campo-form input[type="email"],
@@ -321,9 +329,13 @@ aside {
 }
 
 .enlace-cuenta {
-  margin-top: 2rem;
+  /* //margin-top: 2rem; */
   display: block;
-  opacity: 0.7;
+  opacity: 0.6;
+}
+.enlace-cuenta:hover {
+  /* //margin-top: 2rem; */
+  color: #598df5;
 }
 
 /* ALERTAS */
