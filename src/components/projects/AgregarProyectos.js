@@ -5,7 +5,13 @@ const AgregarProyecto = () => {
   //Obtenerstate del formulario
   const proyectosContext = useContext(proyectoContext);
 
-  const { formularioProyecto, mostrarFormularioFn } = proyectosContext;
+  const {
+    formularioProyecto,
+    errorFormulario,
+    mostrarFormularioFn,
+    agregarProyectoFn,
+    mostrarErrorFn,
+  } = proyectosContext;
 
   const [addProyecto, setAddProyecto] = useState({
     nombre: "",
@@ -25,10 +31,11 @@ const AgregarProyecto = () => {
 
     //Validar el proyecto
     if (nombre === "") {
-      //mostrarError();
+      mostrarErrorFn();
       return;
     }
     //agregar al state
+    agregarProyectoFn(addProyecto);
 
     //reiniciar el formulario
     setAddProyecto({
@@ -64,6 +71,11 @@ const AgregarProyecto = () => {
             value="Añadir Proyecto"
           />
         </form>
+      ) : null}
+      {errorFormulario ? (
+        <p className="mensaje error">
+          Debes añadir un nombre al nuevo proyecto
+        </p>
       ) : null}
     </>
   );

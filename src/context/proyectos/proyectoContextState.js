@@ -1,7 +1,14 @@
 import React, { useReducer } from "react";
 import proyectoContext from "./proyectoContext";
 import proyectoReducer from "./proyectoReducer";
-import { FORMULARIO_PROYECTO, OBTENER_PROYECTOS } from "../../types";
+import {
+  FORMULARIO_PROYECTO,
+  OBTENER_PROYECTOS,
+  AGREGAR_PROYECTO,
+  VALIDAR_FORMULARIO,
+  PROYECTO_ACTUAL,
+} from "../../types";
+import { v4 as uuidv4 } from "uuid";
 
 const ProyectoContextState = (props) => {
   const proyectos = [
@@ -14,6 +21,8 @@ const ProyectoContextState = (props) => {
   const initialState = {
     proyectos: [],
     formularioProyecto: false,
+    errorFormulario: false,
+    proyectoSeleccionado: null,
   };
 
   //Ejecutar las acciones
@@ -29,18 +38,39 @@ const ProyectoContextState = (props) => {
   //Obtener los proyectos
   const obtenerProyectosFn = () => {
     dispatch({
-      Type: OBTENER_PROYECTOS,
+      type: OBTENER_PROYECTOS,
       payload: proyectos,
     });
   };
 
+  //Añadiendo proyectos
+  const agregarProyectoFn = (proyecto) => {
+    proyecto.id = uuidv4();
+    //Insertar el proyecto en el state
+    dispatch({
+      type: AGREGAR_PROYECTO,
+      payload: proyecto,
+    });
+  };
+
+  //Validar formulario por errores
+  const mostrarErrorFn = () => {
+    dispatch({
+      type: VALIDAR_FORMULARIO,
+    });
+  };
+  //Proyecto seleccionado
   return (
     <proyectoContext.Provider
       value={{
         proyectos: state.proyectos,
         formularioProyecto: state.formularioProyecto,
+        errorFormulario: state.errorFormulario,
+        proyectoSeleccionado: state.proyectoSeleccionado,
         mostrarFormularioFn,
         obtenerProyectosFn,
+        agregarProyectoFn,
+        mostrarErrorFn,
       }}
     >
       {props.children}
