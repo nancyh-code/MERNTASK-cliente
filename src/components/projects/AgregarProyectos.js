@@ -74,7 +74,7 @@ const AgregarProyecto = () => {
       ) : null}
       {errorFormulario ? (
         <p className="mensaje error">
-          Debes añadir un nombre al nuevo proyecto
+          Debes añadir un nombre al proyecto nuevo
         </p>
       ) : null}
     </>

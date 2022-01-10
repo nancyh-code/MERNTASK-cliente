@@ -12,7 +12,8 @@ const ListaProyectos = () => {
     obtenerProyectosFn();
   }, []);
   //revisar si proyectos tiene contenido
-  if (proyectos.length === 0) return null;
+  if (proyectos.length === 0)
+    return <p>Todavía no hay proyectos creados, agrega uno</p>;
 
   return (
     <ul className="listado-proyectos">
