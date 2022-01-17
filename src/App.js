@@ -3,12 +3,12 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
 import Proyectos from "./components/projects/Proyectos";
-import ProyectoContextState from "./context/proyectos/proyectoContextState";
+import ProyectoState from "./context/proyectos/proyectoState";
 import TareaState from "./context/tareas/tareaState";
 
 function App() {
   return (
-    <ProyectoContextState>
+    <ProyectoState>
       <TareaState>
         <Router>
           <Routes>
@@ -18,7 +18,7 @@ function App() {
           </Routes>
         </Router>
       </TareaState>
-    </ProyectoContextState>
+    </ProyectoState>
   );
 }
 

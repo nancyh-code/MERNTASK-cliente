@@ -11,7 +11,7 @@ import {
 } from "../../types";
 import { v4 as uuidv4 } from "uuid";
 
-const ProyectoContextState = (props) => {
+const ProyectoState = (props) => {
   const proyectos = [
     { id: 1, nombre: "Tienda Virtual" },
     { id: 2, nombre: "Intranet" },
@@ -96,4 +96,4 @@ const ProyectoContextState = (props) => {
   );
 };
 
-export default ProyectoContextState;
+export default ProyectoState;

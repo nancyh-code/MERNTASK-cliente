@@ -9,7 +9,8 @@ const FormTareas = () => {
 
   //obtener state de tareas
   const tareasContext = useContext(tareaContext);
-  const { agregarTareaFn, validarTareaFn } = tareasContext;
+  const { errorTarea, agregarTareaFn, validarTareaFn, obtenerTareasFn } =
+    tareasContext;
 
   // State del formulario
   const [tarea, guardarTarea] = useState({
@@ -32,21 +33,24 @@ const FormTareas = () => {
   };
 
   const onSubmit = (e) => {
-    e.peventDefault();
+    e.preventDefault();
     //Validar
     if (nombre.trim() === "") {
       validarTareaFn();
       return;
     }
 
-    // pasar la validación
-
     // agregar nueva tarea al state del form
     tarea.proyectoId = proyectoActual.id;
     tarea.estado = false;
     agregarTareaFn(tarea);
 
+    // Obtener y filtrar las tareas del proyecto
+    obtenerTareasFn(proyectoActual.id);
     //reiniciar el form
+    guardarTarea({
+      nombre: "",
+    });
   };
 
   return (
@@ -67,9 +71,13 @@ const FormTareas = () => {
             type="submit"
             className="btn btn-primario btn-submit btn-block"
             //value={tareaseleccionada ? "Editar Tarea" : "Agregar Tarea"}
+            value="Agregar Tarea"
           />
         </div>
       </form>
+      {errorTarea ? (
+        <p className="mensaje error">El nombre de la tarea es obligatorio</p>
+      ) : null}
     </div>
   );
 };

@@ -25,7 +25,7 @@ const TareaState = (props) => {
   // Crear dispatch y state
   const [state, dispatch] = useReducer(TareaReducer, initialState);
 
-  //Crear las funciones
+  //Crear funciones
 
   //Tareas del proyecto
   const obtenerTareasFn = (proyectoId) => {
@@ -43,7 +43,7 @@ const TareaState = (props) => {
     });
   };
 
-  //Validar y mostar un error si es necesario de
+  //Validar y mostrar un error si es necesario
   const validarTareaFn = () => {
     dispatch({
       type: VALIDAR_TAREA,
