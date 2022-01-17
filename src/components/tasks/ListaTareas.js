@@ -8,7 +8,7 @@ const ListaTareas = () => {
   const proyectosContext = useContext(proyectoContext);
   const { proyecto, eliminarProyectoFn } = proyectosContext;
 
-  //  //obtener las tareas del proyecto
+  //  obtener las tareas del proyecto
   const tareasContext = useContext(tareaContext);
   const { tareasProyecto } = tareasContext;
 
@@ -31,7 +31,9 @@ const ListaTareas = () => {
             <p>No hay tareas</p>
           </li>
         ) : (
-          tareasProyecto.map((tarea) => <TareaItem tarea={tarea} />)
+          tareasProyecto.map((tarea) => (
+            <TareaItem key={tarea.id} tarea={tarea} />
+          ))
         )}
       </ul>
       <button
