@@ -30,7 +30,7 @@ const TareaItem = ({ tarea }) => {
     if (tarea.estado) {
       tarea.estado = false;
     } else {
-      tarea.estado = false;
+      tarea.estado = true;
     }
     cambiaEstadoTareaFn(tarea);
   };
